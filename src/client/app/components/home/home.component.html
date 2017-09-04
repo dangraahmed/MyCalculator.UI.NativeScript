@@ -1,23 +1,12 @@
-<h2>
-  {{ 'LOVE_TECH' | translate }} <div class="smile"></div>
-</h2>
-
-<p>
-  {{'ABOUT_REWARD' | translate}}
-</p>
-<p>
-  {{'ABOUT_ADD' | translate}}
-</p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" [placeholder]="'INPUT_HINT' | translate">
-  <button type="submit">{{'ADD_BTN_TEXT' | translate}}</button>
-</form>
-
-<ul>
-  <li *ngFor="let name of (names$ | async)">{{name}}</li>
-</ul>
-
-<p>
-  <a class="link" (click)="readAbout()">About - RouterExtensions example</a>
-</p>
+Ahmed
+<div class="row">
+  <div class="col-3 p-0">
+    <router-outlet name="left"></router-outlet>
+  </div>
+  <div class="col-6 p-0 center-block">
+    <router-outlet name="main"></router-outlet>
+  </div>
+  <div class="col-3 p-0">
+    <router-outlet name="right"></router-outlet>
+  </div>
+</div>

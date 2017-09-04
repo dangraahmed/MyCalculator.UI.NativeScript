@@ -5,7 +5,9 @@
     "src/client/**/*.js": true,
     "nativescript/app": true,
     "nativescript/src/**/*.js": true,
-    "ChromeDebugger-UserData/**/*": true
+    "ChromeDebugger-UserData/**/*": true,
+    "src/client/**/*.spec.ts": true,
+    "src/client/**/*.tns.*": true
   },
   "search.exclude": {
     "**/coverage_js": true,
