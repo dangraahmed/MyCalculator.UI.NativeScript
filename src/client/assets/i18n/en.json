@@ -1,11 +1,7 @@
 {
-  "HOME": "Home",
-  "ABOUT": "About",
-  "HELLO": "Hello",
-  "LOVE_TECH": "I love technology!",
-  "ABOUT_ADD": "You want more? Add them yourself!",
-  "ABOUT_REWARD": "For reward, here is a list of awesome computer scientists:",
-  "INPUT_HINT": "Enter a new computer scientist...",
-  "ADD_BTN_TEXT": "Add",
-  "SUCCESS_MSG": "Your deployment of Angular Seed Advanced worked perfectly."
+  "HOME": "Home11",
+  "ABOUT": "About11",
+  "USER": "User11",
+  "TAX_SLAB": "Tax Slab11",
+  "SALARY_BREAK_UP_ITEMS": "Salary break-up items11"
 }
