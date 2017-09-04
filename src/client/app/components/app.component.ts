@@ -14,7 +14,7 @@ import { Config } from '../modules/core/utils/index';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-app',
+  selector: 'cal-app',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {

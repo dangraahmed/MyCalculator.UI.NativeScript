@@ -5,7 +5,7 @@ import { LogService } from '../../../core/services/logging/log.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-toolbar',
+  selector: 'cal-toolbar',
   templateUrl: 'toolbar.component.html',
   styleUrls: [
     'toolbar.component.css',

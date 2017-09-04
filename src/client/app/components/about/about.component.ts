@@ -3,7 +3,7 @@ import { Config } from '../../modules/core/index';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-about',
+  selector: 'cal-about',
   templateUrl: 'about.component.html',
   styleUrls: [
     'about.component.css',

@@ -81,7 +81,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-home></sd-home>'
+  template: '<cal-home></cal-home>'
 })
 class TestComponent {
 

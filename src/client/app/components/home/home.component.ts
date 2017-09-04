@@ -10,7 +10,7 @@ import { NameList } from '../../modules/sample/index';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-home',
+  selector: 'cal-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']
 })
