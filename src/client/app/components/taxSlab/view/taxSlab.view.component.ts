@@ -1,5 +1,10 @@
 // libs
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../../modules/ngrx/index';
+
+import { TaxSlab } from '../../../modules/taxSlab/actions/index';
+import { ITaxSlab } from '../../../modules/taxSlab/index';
 
 @Component({
     moduleId: module.id,
@@ -7,5 +12,24 @@ import { Component } from '@angular/core';
     templateUrl: 'taxSlab.view.component.html',
     styleUrls: ['taxSlab.view.component.css']
 })
-export class TaxSlabViewComponent {
+export class TaxSlabViewComponent implements OnInit, OnDestroy {
+    public listOfTaxSlab: Array<ITaxSlab>;
+    constructor(private store: Store<fromStore.IAppState>) {
+    }
+
+    ngOnInit() {
+        // this.store.select(fromStore.getTaxSlabs)
+        //     // .takeUntil(this._ngUnsubscribe)
+        //     .subscribe(taxSlabs => {
+        //         this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
+        //         this.listOfTaxSlab = taxSlabs;
+        //     });
+
+        this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
+    }
+
+    ngOnDestroy() {
+        // this._ngUnsubscribe.next();
+        // this._ngUnsubscribe.complete();
+    }
 }

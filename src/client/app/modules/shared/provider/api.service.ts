@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { StorageKey, StorageService } from '../../../modules/core/index';
 import { Config } from '../../core/index';
 
-export class CvltService {
+export class ApiService {
 
     constructor(private http: Http,
         private storage: StorageService) { }
