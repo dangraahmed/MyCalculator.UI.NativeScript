@@ -1,8 +1,10 @@
-import { TaxSlabComponent } from './taxSlab.component';
+import { TaxSlabViewComponent } from './view/taxSlab.view.component';
 
 export const TaxSlabRoutes: Array<any> = [
   {
     path: 'taxSlab',
-    component: TaxSlabComponent
+    children: [
+      { path: 'view', component: TaxSlabViewComponent }
+    ]
   }
 ];

@@ -1,5 +1,5 @@
 import { AccountComponent } from './account.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 
 export const AccountRoutes: Array<any> = [
   {
