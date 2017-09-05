@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <li><a href="#">{{'USER' | translate}}</a></li>
-    <li><a href="#">{{'TAX_SLAB' | translate}}</a></li>
-    <li><a href="#">{{'SALARY_BREAK_UP_ITEMS' | translate}}</a></li>
+    <li><a [routerLink]="['/admin/taxSlab']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{'USER' | translate}}</a></li>
+    <li><a [routerLink]="['/admin/taxSlab/view']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{'TAX_SLAB' | translate}}</a></li>
+    <li><a [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{'SALARY_BREAK_UP_ITEMS' | translate}}</a></li>
   </ul>
 </nav>
