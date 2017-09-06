@@ -9,7 +9,6 @@ export function TaxSlabReducer(
 
   switch (action.type) {
     case TaxSlab.ActionTypes.LOAD_TAX_SLAB_SUCCESSFUL:
-    debugger;
       return null;
 
     default:

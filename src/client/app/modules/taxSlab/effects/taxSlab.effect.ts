@@ -1,7 +1,7 @@
-import { Injectable, Inject, ComponentRef, Compiler } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { Store, Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { TaxSlabService } from '../services/taxSlab.service';
 import { TaxSlab } from '../actions/index';
 
@@ -10,8 +10,9 @@ export class TaxSlabEffects {
     // @Effect()
     // loadTaxSlabs$: Observable<Action> = this.actions$
     //     .ofType(TaxSlab.ActionTypes.LOAD_TAX_SLAB)
-    //     .switchMap(() => {
-    //         debugger;
+    //     .debounceTime(300)
+    //     .map(toPayload)
+    //     .switchMap(param => {
     //         return this.taxSlabService.getTaxSlabs()
     //             .map(payload => {
     //                 return new TaxSlab.LoadTaxSlabSuccessfulAction(payload);
@@ -21,8 +22,7 @@ export class TaxSlabEffects {
     //             });
     //     });
 
-    @Effect()
-    loadTaxSlabs$: Observable<Action> = this.actions$
+    @Effect() loadTaxSlabs$: Observable<Action> = this.actions$
         .ofType(TaxSlab.ActionTypes.LOAD_TAX_SLAB)
         .switchMap(() => this.taxSlabService.getTaxSlabs())
         .map(payload => new TaxSlab.LoadTaxSlabSuccessfulAction(payload))

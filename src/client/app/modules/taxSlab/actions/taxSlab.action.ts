@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/index';
-// import { ITaxSlabState, ITaxSlab } from '../states/index';
-import { ITaxSlab } from '../states/index';
+import { ITaxSlabState, ITaxSlab } from '../states/index';
 
 /**
  * Each action should be namespaced

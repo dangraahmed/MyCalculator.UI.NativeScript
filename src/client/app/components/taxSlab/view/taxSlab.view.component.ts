@@ -18,14 +18,14 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // this.store.select(fromStore.getTaxSlabs)
-        //     // .takeUntil(this._ngUnsubscribe)
-        //     .subscribe(taxSlabs => {
-        //         this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
-        //         this.listOfTaxSlab = taxSlabs;
-        //     });
+        this.store.select(fromStore.getTaxSlabs)
+            // .takeUntil(this._ngUnsubscribe)
+            .subscribe(taxSlabs => {
+                this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
+                this.listOfTaxSlab = taxSlabs;
+            });
 
-        this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
+        // this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
     }
 
     ngOnDestroy() {

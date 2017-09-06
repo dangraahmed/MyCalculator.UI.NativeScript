@@ -1,8 +1,10 @@
+import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { StorageKey, StorageService } from '../../../modules/core/index';
 import { Config } from '../../core/index';
 
+@Injectable()
 export class ApiService {
 
     constructor(private http: Http,
