@@ -48,7 +48,7 @@ import * as fromTaxSlab from '../taxSlab/index';
 export interface IAppState {
   i18n: fromMultilingual.IMultilingualState;
   sample: fromSample.ISampleState;
-  taxSlab: fromTaxSlab.ITaxSlabState;
+  taxSlabs: fromTaxSlab.ITaxSlabState;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface IAppState {
 const reducers = {
   i18n: fromMultilingual.reducer,
   sample: fromSample.reducer,
-  taxSlab: fromTaxSlab.TaxSlabReducer,
+  taxSlabs: fromTaxSlab.taxSlabReducer,
 };
 
 // ensure state is frozen as extra level of security when developing
@@ -79,7 +79,7 @@ export function AppReducer(state: any, action: any) {
 }
 
 export function getTaxSlabs(state: IAppState) {
-  return state.taxSlab.taxSlabs;
+  return state.taxSlabs.taxSlabs;
 }
 
 export function getMultilingualState(state$: Observable<IAppState>): Observable<fromMultilingual.IMultilingualState> {
