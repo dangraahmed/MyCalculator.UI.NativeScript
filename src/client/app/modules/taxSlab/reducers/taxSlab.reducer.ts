@@ -9,7 +9,7 @@ export function taxSlabReducer(
 
   switch (action.type) {
     case TaxSlab.ActionTypes.LOAD_TAX_SLAB_SUCCESSFUL:
-      return (<any>Object).assign({}, state, action.payload);
+      return (<any>Object).assign({}, state, { taxSlabs: action.payload });
 
     default:
       return state;

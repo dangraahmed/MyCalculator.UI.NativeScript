@@ -1,2 +1,24 @@
 <!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
-okokokokok
+<h3>Tax Slab</h3>
+<div *ngIf="listOfTaxSlab">
+  <table class="col-md-12 table-striped table-condensed table-hover">
+    <tr>
+      <th>Id</th>
+      <th>From Year</th>
+      <th>To Year</th>
+      <th>Category</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let taxSlab of listOfTaxSlab.taxSlabs">
+      <td> {{taxSlab.id}} </td>
+      <td> {{taxSlab.fromYear}} </td>
+      <td> {{taxSlab.toYear}} </td>
+      <td> {{taxSlab.category}} </td>
+      <td>
+        <a [routerLink]="['/taxSlabDetail', 'view', taxSlab.id]"><span class="btn glyphicon glyphicon-list" data-toggle="tooltip" title="View"></span></a>
+        <a [routerLink]="['/taxSlabDetail', 'edit', taxSlab.id]"><span class="btn glyphicon glyphicon-edit" title="Edit"></span></a>
+        <a [routerLink]="['/taxSlabDetail', 'delete', taxSlab.id]"><span class="btn glyphicon glyphicon-remove" title="Delete"></span></a>
+      </td>
+    </tr>
+  </table>
+</div>
