@@ -318,6 +318,13 @@ export class SeedConfig {
    */
   CSS_BUNDLE_NAME = 'main';
 
+
+  /**
+   * The name of the bundle file to includes for font awesom.
+   * @type {string}
+   */
+  FONT_BUNDLE_NAME = 'font-awesome.min';
+
   /**
    * The name of the bundle file to include all JavaScript shims.
    * @type {string}
@@ -592,6 +599,7 @@ export class SeedConfig {
   private get _APP_ASSETS(): InjectableDependency[] {
     return [
       { src: `${this.CSS_SRC}/${this.CSS_BUNDLE_NAME}.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
+      { src: `${this.CSS_SRC}/${this.FONT_BUNDLE_NAME}.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
       ...this.APP_ASSETS,
     ];
   }
