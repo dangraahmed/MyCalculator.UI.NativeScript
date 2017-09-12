@@ -1,6 +1,6 @@
 <!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
 <h3>Tax Slab</h3>
-<div *ngIf="listOfTaxSlab">
+<div *ngIf="listOfTaxSlab else loadingData">
   <table class="col-md-12 table-striped table-condensed table-hover">
     <tr>
       <th>Id</th>
@@ -9,7 +9,7 @@
       <th>Category</th>
       <th>&nbsp;</th>
     </tr>
-    <tr *ngFor="let taxSlab of listOfTaxSlab">
+    <tr *ngFor="let taxSlab of listOfTaxSlab.taxSlabs">
       <td> {{taxSlab.id}} </td>
       <td> {{taxSlab.fromYear}} </td>
       <td> {{taxSlab.toYear}} </td>
@@ -22,3 +22,8 @@
     </tr>
   </table>
 </div>
+<ng-template #loadingData>
+  <div>
+    data loading
+  </div>
+</ng-template>
