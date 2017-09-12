@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from '../../shared/provider/api.service';
-import { ITaxSlab, ITaxSlabState } from '../states/taxSlab.state';
+import { ITaxSlabState } from '../states/taxSlab.state';
 
 @Injectable()
 export class TaxSlabService {
@@ -10,7 +10,7 @@ export class TaxSlabService {
 
     }
 
-    getTaxSlabs(): Observable<Array<ITaxSlab>> {
+    getTaxSlabs(): Observable<ITaxSlabState> {
         // let dummyTaxSlab: ITaxSlab[] = [
         //     {
         //         id: 1,

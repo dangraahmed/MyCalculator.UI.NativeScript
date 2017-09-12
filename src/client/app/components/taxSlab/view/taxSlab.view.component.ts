@@ -30,8 +30,6 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
                 }
                 this.listOfTaxSlab = taxSlabs;
             });
-
-        // this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
     }
 
     ngOnDestroy() {

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/index';
-import { ITaxSlabState, ITaxSlab } from '../states/index';
+import { ITaxSlabState } from '../states/index';
 
 /**
  * Each action should be namespaced
@@ -46,7 +46,7 @@ export namespace TaxSlab {
 
     export class LoadTaxSlabSuccessfulAction implements Action {
         type = ActionTypes.LOAD_TAX_SLAB_SUCCESSFUL;
-        constructor(public payload: Array<ITaxSlab>) { }
+        constructor(public payload: ITaxSlabState) { }
     }
 
     export class LoadTaxSlabFailedAction implements Action {

@@ -1,15 +1,15 @@
-import { ITaxSlab } from '../states/index';
+import { ITaxSlabState } from '../states/index';
 import { TaxSlab } from '../actions/index';
 
 export function taxSlabReducer(
-  state: Array<ITaxSlab> = [],
+  state: ITaxSlabState,
   action: TaxSlab.Actions
-): Array<ITaxSlab> {
+): ITaxSlabState {
   let index: number;
 
   switch (action.type) {
     case TaxSlab.ActionTypes.LOAD_TAX_SLAB_SUCCESSFUL:
-      return (<any>Object).assign({}, state, { taxSlabs: action.payload });
+      return (<any>Object).assign({}, state, action.payload);
 
     default:
       return state;
