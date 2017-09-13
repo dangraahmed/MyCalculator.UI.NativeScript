@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from '../../shared/provider/api.service';
-import { ITaxSlabState } from '../states/taxSlab.state';
+import { ITaxSlabState, ITaxSlabDetail } from '../states/taxSlab.state';
 
 @Injectable()
 export class TaxSlabService {
@@ -29,6 +29,12 @@ export class TaxSlabService {
 
         // return Observable.of(dummyTaxSlab);
         return this.http.get({}, 'taxSlab/listTaxSlabs')
+            .map(res => res)
+            .catch(this.handleError.bind(this));
+    }
+
+    getTaxSlabDetail(id: number): Observable<Array<ITaxSlabDetail>> {
+        return this.http.get({}, 'taxSlabDetail/listTaxSlabDetail/' + id)
             .map(res => res)
             .catch(this.handleError.bind(this));
     }

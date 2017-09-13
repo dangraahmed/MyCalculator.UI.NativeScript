@@ -24,12 +24,20 @@ export namespace TaxSlab {
         LOAD_TAX_SLAB: string;
         LOAD_TAX_SLAB_SUCCESSFUL: string;
         LOAD_TAX_SLAB_FAILED: string;
+
+        LOAD_TAX_SLAB_DETAIL: string;
+        LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: string;
+        LOAD_TAX_SLAB_DETAIL_FAILED: string;
     }
 
     export const ActionTypes: ITaxSlabActions = {
         LOAD_TAX_SLAB: type(`${CATEGORY} Load`),
         LOAD_TAX_SLAB_SUCCESSFUL: type(`${CATEGORY} Load Successful`),
-        LOAD_TAX_SLAB_FAILED: type(`${CATEGORY} Load Failed`)
+        LOAD_TAX_SLAB_FAILED: type(`${CATEGORY} Load Failed`),
+
+        LOAD_TAX_SLAB_DETAIL: type(`${CATEGORY} Detail Load`),
+        LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: type(`${CATEGORY} Detail Load Successful`),
+        LOAD_TAX_SLAB_DETAIL_FAILED: type(`${CATEGORY} Detail Load Failed`)
     };
 
     /**
@@ -54,6 +62,25 @@ export namespace TaxSlab {
         payload: string = null;
     }
 
+
+
+
+
+    export class LoadTaxSlabDetailAction implements Action {
+        type = ActionTypes.LOAD_TAX_SLAB_DETAIL;
+        constructor(public payload: number) { }
+    }
+
+    export class LoadTaxSlabDetailSuccessfulAction implements Action {
+        type = ActionTypes.LOAD_TAX_SLAB_DETAIL_SUCCESSFUL;
+        constructor(public payload: any) { }
+    }
+
+    export class LoadTaxSlabDetailFailedAction implements Action {
+        type = ActionTypes.LOAD_TAX_SLAB_DETAIL_FAILED;
+        payload: string = null;
+    }
+
     /**
      * Export a type alias of all actions in this action group
      * so that reducers can easily compose action types
@@ -61,5 +88,9 @@ export namespace TaxSlab {
     export type Actions
         = LoadTaxSlabAction
         | LoadTaxSlabSuccessfulAction
-        | LoadTaxSlabFailedAction;
+        | LoadTaxSlabFailedAction
+        
+        | LoadTaxSlabDetailAction
+        | LoadTaxSlabDetailSuccessfulAction
+        | LoadTaxSlabDetailFailedAction;
 }

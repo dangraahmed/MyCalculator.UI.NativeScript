@@ -82,6 +82,11 @@ export function getTaxSlabs(state: IAppState) {
   return state.tax;
 }
 
+export function getTaxSlabsDetail(state: IAppState) {
+  var ok = state.tax.taxSlabs.filter(s=>s.id === 6)[0];
+  return ok.taxSlabDetail;
+}
+
 export function getMultilingualState(state$: Observable<IAppState>): Observable<fromMultilingual.IMultilingualState> {
   return state$.select(s => s.i18n);
 }
