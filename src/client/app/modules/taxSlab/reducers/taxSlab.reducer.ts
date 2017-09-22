@@ -13,12 +13,14 @@ export function taxSlabReducer(
 
     case TaxSlab.ActionTypes.LOAD_TAX_SLAB_DETAIL_SUCCESSFUL:
       index = state.taxSlabs.map(ts => ts.id).indexOf(6);
-      debugger;
-      return [
-        ...state.taxSlabs.slice(0, index),
-        Object.assign({}, state.taxSlabs[index], { taxSlabDetail: action.payload.taxSlabDetail }),
-        ...state.taxSlabs.slice(index + 1)
-      ];
+      return (<any>Object).assign({}, state, {
+        taxSlabs:
+        [
+          ...state.taxSlabs.slice(0, index),
+          Object.assign({}, state.taxSlabs[index], { taxSlabDetail: action.payload.taxSlabDetail }),
+          ...state.taxSlabs.slice(index + 1)
+        ]
+      });
 
     default:
       return state;
