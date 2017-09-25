@@ -40,6 +40,7 @@ import { combineReducers } from '@ngrx/store';
 import * as fromMultilingual from '../i18n/index';
 import * as fromSample from '../sample/index';
 import * as fromTaxSlab from '../taxSlab/index';
+import * as fromUi from '../ui/index';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -48,6 +49,7 @@ import * as fromTaxSlab from '../taxSlab/index';
 export interface IAppState {
   i18n: fromMultilingual.IMultilingualState;
   sample: fromSample.ISampleState;
+  uiState: fromUi.IUiState;
   tax: fromTaxSlab.ITaxSlabState;
 }
 
@@ -61,6 +63,7 @@ export interface IAppState {
 const reducers = {
   i18n: fromMultilingual.reducer,
   sample: fromSample.reducer,
+  uiState: fromUi.UiReducer,
   tax: fromTaxSlab.taxSlabReducer,
 };
 

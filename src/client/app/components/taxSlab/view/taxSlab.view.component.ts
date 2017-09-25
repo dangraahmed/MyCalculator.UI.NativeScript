@@ -8,6 +8,8 @@ import * as fromStore from '../../../modules/ngrx/index';
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
 import { ITaxSlabState } from '../../../modules/taxSlab/index';
 
+import { Ui } from '../../../modules/ui/index';
+
 @Component({
     moduleId: module.id,
     selector: 'cal-tax-slab',
@@ -25,11 +27,15 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
         this.store.select(fromStore.getTaxSlabs)
             .takeUntil(this._ngUnsubscribe)
             .subscribe(taxSlabs => {
-                if(!taxSlabs) {
+                if (!taxSlabs) {
                     this.store.dispatch(new TaxSlab.LoadTaxSlabAction());
                 }
                 this.listOfTaxSlab = taxSlabs;
             });
+    }
+
+    selectTaxSlab(selectedTaxSlabId: number) {
+        this.store.dispatch(new Ui.SelectTaxSlab(selectedTaxSlabId));
     }
 
     ngOnDestroy() {
