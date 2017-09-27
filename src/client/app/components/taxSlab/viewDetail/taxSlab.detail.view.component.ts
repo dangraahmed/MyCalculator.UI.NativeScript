@@ -22,22 +22,23 @@ export class TaxSlabViewDetailComponent implements OnInit, OnDestroy {
     constructor(
         private store: Store<fromStore.IAppState>,
         private _activatedRouter: ActivatedRoute) {
-        this._activatedRouter.params
-            .takeUntil(this._ngUnsubscribe)
-            .subscribe((params: { id: number }) => {
-                this.selectedId = params.id;
-            });
     }
 
     ngOnInit() {
-        console.log(this.selectedId);
+        this.store.select(fromStore.getSelectedTaxSlabsId)
+        .takeUntil(this._ngUnsubscribe)
+        .subscribe(selectedTaxSlabsId => {
+            this.selectedId = selectedTaxSlabsId;
+        });
+
         this.store.select(fromStore.getTaxSlabsDetail)
             .takeUntil(this._ngUnsubscribe)
             .subscribe(taxSlabs => {
                 if (!taxSlabs) {
-                    this.store.dispatch(new TaxSlab.LoadTaxSlabDetailAction(6));
+                    this.store.dispatch(new TaxSlab.LoadTaxSlabDetailAction(this.selectedId));
                 }
                 this.listOfTaxSlab = taxSlabs;
+                console.log(this.listOfTaxSlab);
             });
     }
 

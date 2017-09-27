@@ -6,7 +6,7 @@ export const TaxSlabRoutes: Array<any> = [
     path: 'taxSlab',
     children: [
       { path: 'view', component: TaxSlabViewComponent },
-      { path: 'viewDetail/:id', component: TaxSlabViewDetailComponent }
+      { path: 'viewDetail', component: TaxSlabViewDetailComponent }
     ]
   }
 ];

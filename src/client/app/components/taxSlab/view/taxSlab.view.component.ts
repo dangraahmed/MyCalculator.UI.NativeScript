@@ -5,6 +5,9 @@ import { Subject } from 'rxjs/Rx';
 
 import * as fromStore from '../../../modules/ngrx/index';
 
+// app
+import { RouterExtensions, Config } from '../../../modules/core/index';
+
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
 import { ITaxSlabState } from '../../../modules/taxSlab/index';
 
@@ -20,7 +23,7 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
     public listOfTaxSlab: ITaxSlabState;
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
-    constructor(private store: Store<fromStore.IAppState>) {
+    constructor(private store: Store<fromStore.IAppState>, public routerext: RouterExtensions) {
     }
 
     ngOnInit() {
@@ -36,6 +39,9 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
 
     selectTaxSlab(selectedTaxSlabId: number) {
         this.store.dispatch(new Ui.SelectTaxSlab(selectedTaxSlabId));
+
+        this.routerext.navigate(['/admin/taxSlab/viewDetail']);
+
     }
 
     ngOnDestroy() {
