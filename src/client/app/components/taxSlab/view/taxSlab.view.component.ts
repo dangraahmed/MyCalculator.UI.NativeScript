@@ -11,8 +11,6 @@ import { RouterExtensions, Config } from '../../../modules/core/index';
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
 import { ITaxSlabState } from '../../../modules/taxSlab/index';
 
-import { Ui } from '../../../modules/ui/index';
-
 @Component({
     moduleId: module.id,
     selector: 'cal-tax-slab',
@@ -38,7 +36,7 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
     }
 
     selectTaxSlab(selectedTaxSlabId: number) {
-        this.store.dispatch(new Ui.SelectTaxSlab(selectedTaxSlabId));
+        this.store.dispatch(new TaxSlab.SelectTaxSlab(selectedTaxSlabId));
 
         this.routerext.navigate(['/admin/taxSlab/viewDetail']);
 

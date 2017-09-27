@@ -25,6 +25,8 @@ export namespace TaxSlab {
         LOAD_TAX_SLAB_SUCCESSFUL: string;
         LOAD_TAX_SLAB_FAILED: string;
 
+        SELECT_TAX_SLAB: string;
+
         LOAD_TAX_SLAB_DETAIL: string;
         LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: string;
         LOAD_TAX_SLAB_DETAIL_FAILED: string;
@@ -34,6 +36,8 @@ export namespace TaxSlab {
         LOAD_TAX_SLAB: type(`${CATEGORY} Load`),
         LOAD_TAX_SLAB_SUCCESSFUL: type(`${CATEGORY} Load Successful`),
         LOAD_TAX_SLAB_FAILED: type(`${CATEGORY} Load Failed`),
+
+        SELECT_TAX_SLAB: type(`${CATEGORY} Select`),
 
         LOAD_TAX_SLAB_DETAIL: type(`${CATEGORY} Detail Load`),
         LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: type(`${CATEGORY} Detail Load Successful`),
@@ -47,6 +51,8 @@ export namespace TaxSlab {
      *
      * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
      */
+
+//#region LOAD_TAX_SLAB 
     export class LoadTaxSlabAction implements Action {
         type = ActionTypes.LOAD_TAX_SLAB;
         payload: string = null;
@@ -61,11 +67,16 @@ export namespace TaxSlab {
         type = ActionTypes.LOAD_TAX_SLAB_FAILED;
         payload: string = null;
     }
+//#endregion
 
 
+    export class SelectTaxSlab implements Action {
+        type = ActionTypes.SELECT_TAX_SLAB;
+        constructor(public payload: number) { }
+    }
 
 
-
+//#region LOAD_TAX_SLAB_DETAIL
     export class LoadTaxSlabDetailAction implements Action {
         type = ActionTypes.LOAD_TAX_SLAB_DETAIL;
         constructor(public payload: number) { }
@@ -80,6 +91,7 @@ export namespace TaxSlab {
         type = ActionTypes.LOAD_TAX_SLAB_DETAIL_FAILED;
         payload: string = null;
     }
+//#endregion
 
     /**
      * Export a type alias of all actions in this action group
@@ -89,7 +101,7 @@ export namespace TaxSlab {
         = LoadTaxSlabAction
         | LoadTaxSlabSuccessfulAction
         | LoadTaxSlabFailedAction
-        
+        | SelectTaxSlab
         | LoadTaxSlabDetailAction
         | LoadTaxSlabDetailSuccessfulAction
         | LoadTaxSlabDetailFailedAction;

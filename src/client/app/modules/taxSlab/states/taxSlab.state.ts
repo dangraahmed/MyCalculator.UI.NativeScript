@@ -17,4 +17,5 @@ export interface ITaxSlabDetail {
 
 export interface ITaxSlabState {
     taxSlabs: Array<ITaxSlab>;
+    selectedTaxSlabId: number;
 }
