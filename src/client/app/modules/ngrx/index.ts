@@ -82,8 +82,8 @@ export function getTaxSlabs(state: IAppState) {
   return state.tax;
 }
 
-export function getTaxSlabsDetail(state: IAppState) {
-  return state.tax.taxSlabs.filter(s=>s.id === state.tax.selectedTaxSlabId)[0].taxSlabDetail;
+export function getSelectedTaxSlab(state: IAppState) {
+  return state.tax.taxSlabs.filter(s=>s.id === state.tax.selectedTaxSlabId)[0];
 }
 
 export function getSelectedTaxSlabsId(state: IAppState) {

@@ -1,24 +1,21 @@
 <!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
-<h3>Tax Slab</h3>
-<div *ngIf="listOfTaxSlab else loadingData">
+<h3>Tax slab details view</h3>
+<hr>
+<div *ngIf="taxSlab.taxSlabDetail else loadingData">
+  <div class="table-condensed">
+    <b>Period:</b> {{taxSlab.fromYear}} to {{taxSlab.toYear}}<br>
+    <b>Category:</b> {{taxSlab.category}}<br>
+  </div>
+  <a><span class="fa fa-pencil-square-o" title="Edit"></span></a>
+  <a><span class="fa fa-trash-o" title="Delete"></span></a>
   <table class="col-md-12 table-striped table-condensed table-hover">
     <tr>
-      <th>Id</th>
-      <th>From Year</th>
-      <th>To Year</th>
-      <th>Category</th>
-      <th>&nbsp;</th>
+      <th>Slab</th>
+      <th>Percentage</th>
     </tr>
-    <tr *ngFor="let taxSlab of listOfTaxSlab.taxSlabs">
-      <td> {{taxSlab.id}} </td>
-      <td> {{taxSlab.fromYear}} </td>
-      <td> {{taxSlab.toYear}} </td>
-      <td> {{taxSlab.category}} </td>
-      <td>
-        <a [routerLink]="['/taxSlabDetail', 'view', taxSlab.id]"><span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
-        <a [routerLink]="['/taxSlabDetail', 'edit', taxSlab.id]"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
-        <a [routerLink]="['/taxSlabDetail', 'delete', taxSlab.id]"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
-      </td>
+    <tr *ngFor="let taxSlabDetail of taxSlab.taxSlabDetail">
+      <td>{{taxSlabDetail.slab}} </td>
+      <td> {{taxSlabDetail.percentage}} </td>
     </tr>
   </table>
 </div>

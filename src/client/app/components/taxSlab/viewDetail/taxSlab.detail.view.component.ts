@@ -16,7 +16,7 @@ import { ITaxSlabState } from '../../../modules/taxSlab/index';
     styleUrls: ['taxSlab.detail.view.component.css']
 })
 export class TaxSlabViewDetailComponent implements OnInit, OnDestroy {
-    public listOfTaxSlab: ITaxSlabState;
+    public taxSlab: ITaxSlabState;
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
     private selectedId: number;
     constructor(
@@ -31,14 +31,13 @@ export class TaxSlabViewDetailComponent implements OnInit, OnDestroy {
             this.selectedId = selectedTaxSlabsId;
         });
 
-        this.store.select(fromStore.getTaxSlabsDetail)
+        this.store.select(fromStore.getSelectedTaxSlab)
             .takeUntil(this._ngUnsubscribe)
-            .subscribe(taxSlabs => {
-                if (!taxSlabs) {
+            .subscribe(taxSlab => {
+                if (!taxSlab.taxSlabDetail) {
                     this.store.dispatch(new TaxSlab.LoadTaxSlabDetailAction(this.selectedId));
                 }
-                this.listOfTaxSlab = taxSlabs;
-                console.log(this.listOfTaxSlab);
+                this.taxSlab = taxSlab;
             });
     }
 
