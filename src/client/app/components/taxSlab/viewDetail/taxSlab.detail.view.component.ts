@@ -7,7 +7,7 @@ import { Subject } from 'rxjs/Rx';
 import * as fromStore from '../../../modules/ngrx/index';
 
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
-import { ITaxSlabState } from '../../../modules/taxSlab/index';
+import { ITaxSlab } from '../../../modules/taxSlab/index';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +16,7 @@ import { ITaxSlabState } from '../../../modules/taxSlab/index';
     styleUrls: ['taxSlab.detail.view.component.css']
 })
 export class TaxSlabViewDetailComponent implements OnInit, OnDestroy {
-    public taxSlab: ITaxSlabState;
+    public taxSlab: ITaxSlab;
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
     private selectedId: number;
     constructor(
