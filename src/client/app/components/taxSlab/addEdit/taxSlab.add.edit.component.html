@@ -1,0 +1,36 @@
+<!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
+<!-- <h3>Tax slab details edit</h3> -->
+<hr>
+<div class="pull-right">
+  <button class="btn" (click)="saveTaxSlab()">Save</button>
+  <button class="btn" (click)="addRange()">Cancel</button>
+</div>
+<div *ngIf="taxSlab.taxSlabDetail else loadingData">
+  <div class="table-condensed">
+    <b>Period from:</b> <input type="text" [(ngModel)]="taxSlab.fromYear" class="form-control" />
+    <br>
+    <b>Period to:</b> <input type="text" [(ngModel)]="taxSlab.toYear" class="form-control" />
+    <br>
+    <b>Category:</b> <input type="text" [(ngModel)]="taxSlab.category" class="form-control" />
+    <br>
+  </div>
+  <table class="col-md-12 table-striped table-condensed table-hover">
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Percentage</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let taxSlabDetail of taxSlab.taxSlabDetail">
+      <td><input type="text" [(ngModel)]="taxSlabDetail.slabFromAmount" class="form-control" /></td>
+      <td><input type="text" [(ngModel)]="taxSlabDetail.slabToAmount" class="form-control" /></td>
+      <td><input type="text" [(ngModel)]="taxSlabDetail.percentage" class="form-control" /></td>
+      <td><a (click)="removeRange(taxSlabDetail)"><span class="btn glyphicon glyphicon-remove" title="Delete"></span></a></td>
+    </tr>
+  </table>
+</div>
+<ng-template #loadingData>
+  <div>
+    data loading
+  </div>
+</ng-template>

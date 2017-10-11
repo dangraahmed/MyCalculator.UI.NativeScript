@@ -1,5 +1,5 @@
 <!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
-<h3>Tax Slab</h3>
+<!-- <h3>Tax Slab</h3> -->
 <div *ngIf="listOfTaxSlab else loadingData">
   <table class="col-md-12 table-striped table-condensed table-hover">
     <tr>
@@ -15,8 +15,8 @@
       <td> {{taxSlab.toYear}} </td>
       <td> {{taxSlab.category}} </td>
       <td>
-        <a (click)="selectTaxSlab(taxSlab.id)"><span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
-        <a [routerLink]="['/taxSlabDetail', 'edit', taxSlab.id]"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
+        <a (click)="selectTaxSlab(taxSlab.id, 'view')"><span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
+        <a (click)="selectTaxSlab(taxSlab.id, 'edit')"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
         <a [routerLink]="['/taxSlabDetail', 'delete', taxSlab.id]"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
       </td>
     </tr>

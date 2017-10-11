@@ -35,11 +35,14 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
             });
     }
 
-    selectTaxSlab(selectedTaxSlabId: number) {
+    selectTaxSlab(selectedTaxSlabId: number, action: string) {
         this.store.dispatch(new TaxSlab.SelectTaxSlab(selectedTaxSlabId));
 
-        this.routerext.navigate(['/admin/taxSlab/viewDetail']);
-
+        if (action === 'view') {
+            this.routerext.navigate(['/admin/taxSlab/viewDetail']);
+        } else if (action === 'edit') {
+            this.routerext.navigate(['/admin/taxSlab/addEdit']);
+        }
     }
 
     ngOnDestroy() {
