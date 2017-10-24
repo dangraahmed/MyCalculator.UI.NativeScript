@@ -5,30 +5,72 @@
   <button class="btn" (click)="saveTaxSlab()">Save</button>
   <button class="btn" (click)="addRange()">Cancel</button>
 </div>
-<div *ngIf="taxSlab.taxSlabDetail else loadingData">
-  <div class="table-condensed">
-    <b>Period from:</b> <input type="text" [(ngModel)]="taxSlab.fromYear" class="form-control" />
-    <br>
-    <b>Period to:</b> <input type="text" [(ngModel)]="taxSlab.toYear" class="form-control" />
-    <br>
-    <b>Category:</b> <input type="text" [(ngModel)]="taxSlab.category" class="form-control" />
-    <br>
+{{taxSlabform.value | json}}
+<form [formGroup]="taxSlabform">
+  <!-- <div *ngIf="taxSlab.taxSlabDetail else loadingData"> -->
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <b>Period from:</b>
+      <input type="text" formControlName="fromYear" class="form-control" />
+      <br>
+      <b>Period to:</b>
+      <input type="text" formControlName="toYear" class="form-control" />
+      <br>
+      <b>Category:</b>
+      <input type="text" formControlName="category" class="form-control" />
+      <br>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <b>From</b>
+        </div>
+        <div class="col">
+          <b>To</b>
+        </div>
+        <div class="col">
+          <b>Percentage</b>
+        </div>
+        <div class="col">
+          <b>&nbsp;</b>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col pull-right">
+          <a (click)="addRange(null)">
+              <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+            </a>
+        </div>
+      </div>
+      <div *ngFor="let taxSlabDetail of taxSlabform.controls.taxSlabDetail.controls; index as taxSlabDetailIndex">
+        <div formArrayName="taxSlabDetail">
+          <div [formGroupName]="taxSlabDetailIndex" class="row">
+            <div class="col">
+              <input type="text" formControlName="slabFromAmount" class="form-control" />
+            </div>
+            <div class="col">
+              <input type="text" formControlName="slabToAmount" class="form-control" />
+            </div>
+            <div class="col">
+              <input type="text" formControlName="percentage" class="form-control" />
+            </div>
+            <div class="col">
+              <a (click)="removeRange(taxSlabDetailIndex)">
+                <span>
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <table class="col-md-12 table-striped table-condensed table-hover">
-    <tr>
-      <th>From</th>
-      <th>To</th>
-      <th>Percentage</th>
-      <th>&nbsp;</th>
-    </tr>
-    <tr *ngFor="let taxSlabDetail of taxSlab.taxSlabDetail">
-      <td><input type="text" [(ngModel)]="taxSlabDetail.slabFromAmount" class="form-control" /></td>
-      <td><input type="text" [(ngModel)]="taxSlabDetail.slabToAmount" class="form-control" /></td>
-      <td><input type="text" [(ngModel)]="taxSlabDetail.percentage" class="form-control" /></td>
-      <td><a (click)="removeRange(taxSlabDetail)"><span class="btn glyphicon glyphicon-remove" title="Delete"></span></a></td>
-    </tr>
-  </table>
-</div>
+</form>
 <ng-template #loadingData>
   <div>
     data loading
