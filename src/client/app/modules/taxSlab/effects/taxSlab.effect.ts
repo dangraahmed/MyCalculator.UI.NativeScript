@@ -38,6 +38,15 @@ export class TaxSlabEffects {
             .catch(() => Observable.of(new TaxSlab.LoadTaxSlabDetailFailedAction()));
         });
 
+    @Effect() addTaxSlabs$: Observable<Action> = this.actions$
+        .ofType(TaxSlab.ActionTypes.ADD_UPDATE_TAX_SLAB)
+        .map(toPayload)
+        .switchMap(taxSlabId => {
+            return this.taxSlabService.addUpdateTaxSlab(taxSlabId)
+            .map(payload => new TaxSlab.AddUpdateTaxSlabSuccessfulAction(payload))
+            .catch(() => Observable.of(new TaxSlab.AddUpdateTaxSlabFailedAction()));
+        });
+
     constructor(
         private store: Store<any>,
         private actions$: Actions,

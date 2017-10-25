@@ -10,6 +10,8 @@ import * as fromStore from '../../../modules/ngrx/index';
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
 import { ITaxSlab, ITaxSlabDetail } from '../../../modules/taxSlab/index';
 
+import { RouterExtensions, Config } from '../../../modules/core/index';
+
 @Component({
     moduleId: module.id,
     selector: 'cal-tax-slab-add-edit',
@@ -23,7 +25,7 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
     private selectedId: number;
     constructor(
         private store: Store<fromStore.IAppState>,
-        private _activatedRouter: ActivatedRoute,
+        public routerext: RouterExtensions,
         private _formBuilder: FormBuilder) {
     }
 
@@ -46,6 +48,7 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
 
     createTaxSlabForm(taxSlab: ITaxSlab) {
         this.taxSlabform = this._formBuilder.group({
+            'id': [taxSlab.id, Validators.required],
             'fromYear': [taxSlab.fromYear, Validators.required],
             'toYear': [taxSlab.toYear, Validators.required],
             'category': [taxSlab.category, Validators.required],
@@ -79,15 +82,22 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
         taxSlabDetailControl.push(this.gettaxSlabDetailForm(taxSlabDetail));
     }
 
+    saveTaxSlab() {
+        this.store.dispatch(new TaxSlab.AddUpdateTaxSlabAction(this.taxSlabform.value));
+        this.routerext.navigate(['/admin/taxSlab/view']);
+    }
+
     private gettaxSlabDetailForm(taxSlabDetail: ITaxSlabDetail) {
         if (taxSlabDetail) {
             return this._formBuilder.group({
+                'id': [taxSlabDetail.id],
                 'slabFromAmount': [taxSlabDetail.slabFromAmount],
                 'slabToAmount': [taxSlabDetail.slabToAmount],
                 'percentage': [taxSlabDetail.percentage, Validators.required]
             });
         } else {
             return this._formBuilder.group({
+                'id': [-1],
                 'slabFromAmount': [''],
                 'slabToAmount': [''],
                 'percentage': ['', Validators.required]

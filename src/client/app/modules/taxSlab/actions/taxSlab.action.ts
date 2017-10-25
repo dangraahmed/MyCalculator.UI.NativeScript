@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/index';
-import { ITaxSlabState } from '../states/index';
+import { ITaxSlabState, ITaxSlab } from '../states/index';
 
 /**
  * Each action should be namespaced
@@ -30,6 +30,10 @@ export namespace TaxSlab {
         LOAD_TAX_SLAB_DETAIL: string;
         LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: string;
         LOAD_TAX_SLAB_DETAIL_FAILED: string;
+
+        ADD_UPDATE_TAX_SLAB: string;
+        ADD_UPDATE_TAX_SLAB_SUCCESSFUL: string;
+        ADD_UPDATE_TAX_SLAB_FAILED: string;
     }
 
     export const ActionTypes: ITaxSlabActions = {
@@ -41,7 +45,11 @@ export namespace TaxSlab {
 
         LOAD_TAX_SLAB_DETAIL: type(`${CATEGORY} Detail Load`),
         LOAD_TAX_SLAB_DETAIL_SUCCESSFUL: type(`${CATEGORY} Detail Load Successful`),
-        LOAD_TAX_SLAB_DETAIL_FAILED: type(`${CATEGORY} Detail Load Failed`)
+        LOAD_TAX_SLAB_DETAIL_FAILED: type(`${CATEGORY} Detail Load Failed`),
+
+        ADD_UPDATE_TAX_SLAB: type(`${CATEGORY} Add Or Update`),
+        ADD_UPDATE_TAX_SLAB_SUCCESSFUL: type(`${CATEGORY} Add Or Update Successful`),
+        ADD_UPDATE_TAX_SLAB_FAILED: type(`${CATEGORY} Add Or Update Failed`)
     };
 
     /**
@@ -93,6 +101,23 @@ export namespace TaxSlab {
     }
 //#endregion
 
+//#region ADD_TAX_SLAB 
+export class AddUpdateTaxSlabAction implements Action {
+    type = ActionTypes.ADD_UPDATE_TAX_SLAB;
+    constructor(public payload: ITaxSlab) { }
+}
+
+export class AddUpdateTaxSlabSuccessfulAction implements Action {
+    type = ActionTypes.ADD_UPDATE_TAX_SLAB_SUCCESSFUL;
+    constructor(public payload: ITaxSlab) { }
+}
+
+export class AddUpdateTaxSlabFailedAction implements Action {
+    type = ActionTypes.ADD_UPDATE_TAX_SLAB_FAILED;
+    payload: string = null;
+}
+//#endregion
+
     /**
      * Export a type alias of all actions in this action group
      * so that reducers can easily compose action types
@@ -104,5 +129,8 @@ export namespace TaxSlab {
         | SelectTaxSlab
         | LoadTaxSlabDetailAction
         | LoadTaxSlabDetailSuccessfulAction
-        | LoadTaxSlabDetailFailedAction;
+        | LoadTaxSlabDetailFailedAction
+        | AddUpdateTaxSlabAction
+        | AddUpdateTaxSlabSuccessfulAction
+        | AddUpdateTaxSlabFailedAction;
 }
