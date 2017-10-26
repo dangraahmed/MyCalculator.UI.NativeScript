@@ -34,19 +34,19 @@ export class TaxSlabService {
     }
 
     getTaxSlabDetail(id: number): Observable<Array<ITaxSlabDetail>> {
-        return this.http.get({}, 'taxSlabDetail/listTaxSlabDetail/' + id)
+        return this.http.get({}, 'taxSlab/listTaxSlabDetail/' + id)
             .map(res => res)
             .catch(this.handleError.bind(this));
     }
 
     addUpdateTaxSlab(taxSlab: ITaxSlab): Observable<ITaxSlab> {
-        return this.http.post(taxSlab, 'taxSlabDetail/insertUpdateTaxSlab')
+        return this.http.post(taxSlab, 'taxSlab/insertUpdateTaxSlab')
             .map(res => res)
             .catch(this.handleError.bind(this));
     }
 
     deleteTaxSlab(id: number): Observable<boolean> {
-        return this.http.post(null, 'taxSlabDetail/deleteTaxSlab/' + id)
+        return this.http.post(null, 'taxSlab/deleteTaxSlab/' + id)
             .map(res => res)
             .catch(this.handleError.bind(this));
     }
