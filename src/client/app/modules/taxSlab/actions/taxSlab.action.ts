@@ -34,6 +34,10 @@ export namespace TaxSlab {
         ADD_UPDATE_TAX_SLAB: string;
         ADD_UPDATE_TAX_SLAB_SUCCESSFUL: string;
         ADD_UPDATE_TAX_SLAB_FAILED: string;
+
+        DELETE_TAX_SLAB: string;
+        DELETE_TAX_SLAB_SUCCESSFUL: string;
+        DELETE_TAX_SLAB_FAILED: string;
     }
 
     export const ActionTypes: ITaxSlabActions = {
@@ -49,7 +53,11 @@ export namespace TaxSlab {
 
         ADD_UPDATE_TAX_SLAB: type(`${CATEGORY} Add Or Update`),
         ADD_UPDATE_TAX_SLAB_SUCCESSFUL: type(`${CATEGORY} Add Or Update Successful`),
-        ADD_UPDATE_TAX_SLAB_FAILED: type(`${CATEGORY} Add Or Update Failed`)
+        ADD_UPDATE_TAX_SLAB_FAILED: type(`${CATEGORY} Add Or Update Failed`),
+
+        DELETE_TAX_SLAB: type(`${CATEGORY} Delete`),
+        DELETE_TAX_SLAB_SUCCESSFUL: type(`${CATEGORY} Delete Successful`),
+        DELETE_TAX_SLAB_FAILED: type(`${CATEGORY} Delete Failed`)
     };
 
     /**
@@ -60,7 +68,7 @@ export namespace TaxSlab {
      * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
      */
 
-//#region LOAD_TAX_SLAB 
+    //#region LOAD_TAX_SLAB 
     export class LoadTaxSlabAction implements Action {
         type = ActionTypes.LOAD_TAX_SLAB;
         payload: string = null;
@@ -75,7 +83,7 @@ export namespace TaxSlab {
         type = ActionTypes.LOAD_TAX_SLAB_FAILED;
         payload: string = null;
     }
-//#endregion
+    //#endregion
 
 
     export class SelectTaxSlab implements Action {
@@ -84,7 +92,7 @@ export namespace TaxSlab {
     }
 
 
-//#region LOAD_TAX_SLAB_DETAIL
+    //#region LOAD_TAX_SLAB_DETAIL
     export class LoadTaxSlabDetailAction implements Action {
         type = ActionTypes.LOAD_TAX_SLAB_DETAIL;
         constructor(public payload: number) { }
@@ -99,24 +107,42 @@ export namespace TaxSlab {
         type = ActionTypes.LOAD_TAX_SLAB_DETAIL_FAILED;
         payload: string = null;
     }
-//#endregion
+    //#endregion
 
-//#region ADD_TAX_SLAB 
-export class AddUpdateTaxSlabAction implements Action {
-    type = ActionTypes.ADD_UPDATE_TAX_SLAB;
-    constructor(public payload: ITaxSlab) { }
-}
+    //#region ADD_TAX_SLAB 
+    export class AddUpdateTaxSlabAction implements Action {
+        type = ActionTypes.ADD_UPDATE_TAX_SLAB;
+        constructor(public payload: ITaxSlab) { }
+    }
 
-export class AddUpdateTaxSlabSuccessfulAction implements Action {
-    type = ActionTypes.ADD_UPDATE_TAX_SLAB_SUCCESSFUL;
-    constructor(public payload: ITaxSlab) { }
-}
+    export class AddUpdateTaxSlabSuccessfulAction implements Action {
+        type = ActionTypes.ADD_UPDATE_TAX_SLAB_SUCCESSFUL;
+        constructor(public payload: ITaxSlab) { }
+    }
 
-export class AddUpdateTaxSlabFailedAction implements Action {
-    type = ActionTypes.ADD_UPDATE_TAX_SLAB_FAILED;
-    payload: string = null;
-}
-//#endregion
+    export class AddUpdateTaxSlabFailedAction implements Action {
+        type = ActionTypes.ADD_UPDATE_TAX_SLAB_FAILED;
+        payload: string = null;
+    }
+    //#endregion
+
+    //#region DELETE_TAX_SLAB
+    export class DeleteTaxSlabAction implements Action {
+        type = ActionTypes.DELETE_TAX_SLAB;
+        constructor(public payload: number) { }
+    }
+
+    export class DeleteTaxSlabSuccessfulAction implements Action {
+        type = ActionTypes.DELETE_TAX_SLAB_SUCCESSFUL;
+        constructor(public payload: any) { }
+    }
+
+    export class DeleteTaxSlabFailedAction implements Action {
+        type = ActionTypes.DELETE_TAX_SLAB_FAILED;
+        payload: string = null;
+    }
+    //#endregion
+
 
     /**
      * Export a type alias of all actions in this action group
@@ -132,5 +158,8 @@ export class AddUpdateTaxSlabFailedAction implements Action {
         | LoadTaxSlabDetailFailedAction
         | AddUpdateTaxSlabAction
         | AddUpdateTaxSlabSuccessfulAction
-        | AddUpdateTaxSlabFailedAction;
+        | AddUpdateTaxSlabFailedAction
+        | DeleteTaxSlabAction
+        | DeleteTaxSlabSuccessfulAction
+        | DeleteTaxSlabFailedAction;
 }

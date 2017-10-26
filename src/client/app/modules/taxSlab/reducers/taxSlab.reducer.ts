@@ -26,7 +26,7 @@ export function taxSlabReducer(
       });
 
     case TaxSlab.ActionTypes.ADD_UPDATE_TAX_SLAB_SUCCESSFUL:
-    // TODO : refactoring required remove duplicate code
+      // TODO : refactoring required remove duplicate code
       if (state.selectedTaxSlabId !== -1) {
         index = state.taxSlabs.map(ts => ts.id).indexOf(state.selectedTaxSlabId);
         return (<any>Object).assign({}, state, {
@@ -47,7 +47,15 @@ export function taxSlabReducer(
         });
       }
 
-
+    case TaxSlab.ActionTypes.DELETE_TAX_SLAB_SUCCESSFUL:
+      index = state.taxSlabs.map(ts => ts.id).indexOf(state.selectedTaxSlabId);
+      return (<any>Object).assign({}, state, {
+        taxSlabs:
+        [
+          ...state.taxSlabs.slice(0, index),
+          ...state.taxSlabs.slice(index + 1)
+        ]
+      });
 
 
     default:

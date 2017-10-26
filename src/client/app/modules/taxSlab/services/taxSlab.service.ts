@@ -45,6 +45,12 @@ export class TaxSlabService {
             .catch(this.handleError.bind(this));
     }
 
+    deleteTaxSlab(id: number): Observable<boolean> {
+        return this.http.post(null, 'taxSlabDetail/deleteTaxSlab/' + id)
+            .map(res => res)
+            .catch(this.handleError.bind(this));
+    }
+
 
     private handleError(error: any): Observable<any> {
         return Observable.throw(error.message || error);

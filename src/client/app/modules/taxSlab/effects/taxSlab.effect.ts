@@ -34,8 +34,8 @@ export class TaxSlabEffects {
         .map(toPayload)
         .switchMap(taxSlabId => {
             return this.taxSlabService.getTaxSlabDetail(taxSlabId)
-            .map(payload => new TaxSlab.LoadTaxSlabDetailSuccessfulAction(payload))
-            .catch(() => Observable.of(new TaxSlab.LoadTaxSlabDetailFailedAction()));
+                .map(payload => new TaxSlab.LoadTaxSlabDetailSuccessfulAction(payload))
+                .catch(() => Observable.of(new TaxSlab.LoadTaxSlabDetailFailedAction()));
         });
 
     @Effect() addTaxSlabs$: Observable<Action> = this.actions$
@@ -43,8 +43,17 @@ export class TaxSlabEffects {
         .map(toPayload)
         .switchMap(taxSlabId => {
             return this.taxSlabService.addUpdateTaxSlab(taxSlabId)
-            .map(payload => new TaxSlab.AddUpdateTaxSlabSuccessfulAction(payload))
-            .catch(() => Observable.of(new TaxSlab.AddUpdateTaxSlabFailedAction()));
+                .map(payload => new TaxSlab.AddUpdateTaxSlabSuccessfulAction(payload))
+                .catch(() => Observable.of(new TaxSlab.AddUpdateTaxSlabFailedAction()));
+        });
+
+    @Effect() deleteTaxSlab$: Observable<Action> = this.actions$
+        .ofType(TaxSlab.ActionTypes.DELETE_TAX_SLAB)
+        .map(toPayload)
+        .switchMap(taxSlabId => {
+            return this.taxSlabService.deleteTaxSlab(taxSlabId)
+                .map(payload => new TaxSlab.DeleteTaxSlabSuccessfulAction(payload))
+                .catch(() => Observable.of(new TaxSlab.DeleteTaxSlabFailedAction()));
         });
 
     constructor(

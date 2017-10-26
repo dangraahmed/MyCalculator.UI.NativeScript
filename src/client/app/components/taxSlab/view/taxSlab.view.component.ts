@@ -42,6 +42,8 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
             this.routerext.navigate(['/admin/taxSlab/viewDetail']);
         } else if (action === 'edit') {
             this.routerext.navigate(['/admin/taxSlab/addEdit']);
+        } else if (action === 'delete') {
+            this.store.dispatch(new TaxSlab.DeleteTaxSlabAction(selectedTaxSlabId));
         }
     }
 
