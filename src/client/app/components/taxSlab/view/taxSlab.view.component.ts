@@ -35,7 +35,7 @@ export class TaxSlabViewComponent implements OnInit, OnDestroy {
             });
     }
 
-    selectTaxSlab(selectedTaxSlabId: number, action: string) {
+    curdOperation(selectedTaxSlabId: number, action: string) {
         this.store.dispatch(new TaxSlab.SelectTaxSlab(selectedTaxSlabId));
 
         if (action === 'view') {

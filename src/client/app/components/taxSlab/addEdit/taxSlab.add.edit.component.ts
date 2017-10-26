@@ -36,26 +36,47 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
                 this.selectedId = selectedTaxSlabsId;
             });
 
-        this.store.select(fromStore.getSelectedTaxSlab)
-            .takeUntil(this._ngUnsubscribe)
-            .subscribe(taxSlab => {
-                if (!taxSlab.taxSlabDetail) {
-                    this.store.dispatch(new TaxSlab.LoadTaxSlabDetailAction(this.selectedId));
-                }
-                this.createTaxSlabForm(taxSlab);
-            });
+        if (this.selectedId !== -1) {
+            this.store.select(fromStore.getSelectedTaxSlab)
+                .takeUntil(this._ngUnsubscribe)
+                .subscribe(taxSlab => {
+                    if (!taxSlab.taxSlabDetail) {
+                        this.store.dispatch(new TaxSlab.LoadTaxSlabDetailAction(this.selectedId));
+                    }
+                    this.createTaxSlabForm(taxSlab);
+                });
+        } else {
+            this.createTaxSlabForm(null);
+        }
+
     }
 
     createTaxSlabForm(taxSlab: ITaxSlab) {
-        this.taxSlabform = this._formBuilder.group({
-            'id': [taxSlab.id, Validators.required],
-            'fromYear': [taxSlab.fromYear, Validators.required],
-            'toYear': [taxSlab.toYear, Validators.required],
-            'category': [taxSlab.category, Validators.required],
-            'taxSlabDetail': this._formBuilder.array([])
-        });
+        // TODO : refactoring required remove duplicate code
+        if (taxSlab) {
+            this.taxSlabform = this._formBuilder.group({
+                'id': [taxSlab.id, Validators.required],
+                'fromYear': [taxSlab.fromYear, Validators.required],
+                'toYear': [taxSlab.toYear, Validators.required],
+                'category': [taxSlab.category, Validators.required],
+                'taxSlabDetail': this._formBuilder.array([])
+            });
 
-        this.createTaxSlabDetailForm(taxSlab.taxSlabDetail);
+            this.createTaxSlabDetailForm(taxSlab.taxSlabDetail);
+        } else {
+            this.taxSlabform = this._formBuilder.group({
+                'id': [-1, Validators.required],
+                'fromYear': ['', Validators.required],
+                'toYear': ['', Validators.required],
+                'category': ['', Validators.required],
+                'taxSlabDetail': this._formBuilder.array([])
+            });
+
+            this.addRange(null);
+            this.addRange(null);
+            this.addRange(null);
+        }
+
     }
 
     createTaxSlabDetailForm(taxSlabDetailArray: Array<ITaxSlabDetail>) {
@@ -88,6 +109,7 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
     }
 
     private gettaxSlabDetailForm(taxSlabDetail: ITaxSlabDetail) {
+        // TODO : refactoring required remove duplicate code
         if (taxSlabDetail) {
             return this._formBuilder.group({
                 'id': [taxSlabDetail.id],
