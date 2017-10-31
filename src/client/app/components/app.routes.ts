@@ -9,6 +9,11 @@ export const routes: Array<any> = [
   //   path: '',
   //   component: HomeComponent
   // },
+  {
+    path: '',
+    redirectTo: '/admin',
+    pathMatch: 'full'
+  },
   ...HomeRoutes,
   ...AdminRoutes,
   ...AccountRoutes

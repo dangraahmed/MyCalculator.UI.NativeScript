@@ -16,7 +16,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app/components/app.component';
 import { AboutComponent } from './app/components/about/about.component';
 import { HomeComponent } from './app/components/home/home.component';
-import { AdminComponent } from './app/components/admin/admin.component';
+import { ADMIN_COMPONENTS } from './app/components/admin/index';
+import { ACCOUNT_COMPONENTS } from './app/components/account/index';
 import { routes } from './app/components/app.routes';
 
 // feature modules
@@ -47,7 +48,8 @@ import { ConsoleService, ConsoleTarget, LogLevel } from './app/modules/core/inde
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminComponent,
+    ...ADMIN_COMPONENTS,
+    ...ACCOUNT_COMPONENTS,
     AboutComponent
   ],
   schemas: [

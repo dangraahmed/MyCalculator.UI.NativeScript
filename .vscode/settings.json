@@ -7,6 +7,7 @@
     "nativescript/src/**/*.js": true,
     "ChromeDebugger-UserData/**/*": true,
     "src/client/**/*.spec.ts": true,
+    "nativescript/src/**/*.spec.ts": true,
     "src/client/**/*.tns.*": true,
     "src/e2e/**/*": true,
     ".docker/**/*": true,
