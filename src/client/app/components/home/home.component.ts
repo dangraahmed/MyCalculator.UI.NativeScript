@@ -10,7 +10,7 @@ import { NameList } from '../../modules/sample/index';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-home',
+  selector: 'cal-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']
 })
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   public names$: Observable<any>;
   public newName: string;
 
-  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {}
+  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) { }
 
   ngOnInit() {
     this.names$ = this.store.let(getNames);

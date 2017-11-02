@@ -1,0 +1,36 @@
+<!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
+<!-- <h3>Tax slab details view</h3> -->
+<hr>
+<div *ngIf="taxSlab.taxSlabDetail else loadingData">
+  <div class="table-condensed">
+    <b>Period:</b> {{taxSlab.fromYear}} to {{taxSlab.toYear}}
+    <br>
+    <b>Category:</b> {{taxSlab.category}}
+    <br>
+  </div>
+  <div class="pull-right">
+    <a>
+      <a [routerLink]="['/admin/taxSlab', 'addEdit']">
+        <span class="fa fa-pencil-square-o" title="Edit"></span>
+      </a>
+    </a>
+    <a>
+      <span class="fa fa-trash-o" title="Delete"></span>
+    </a>
+  </div>
+  <table class="col-md-12 table-striped table-condensed table-hover">
+    <tr>
+      <th>Slab</th>
+      <th>Percentage</th>
+    </tr>
+    <tr *ngFor="let taxSlabDetail of taxSlab.taxSlabDetail">
+      <td>{{taxSlabDetail.slab}} </td>
+      <td> {{taxSlabDetail.percentage}} </td>
+    </tr>
+  </table>
+</div>
+<ng-template #loadingData>
+  <div>
+    data loading
+  </div>
+</ng-template>

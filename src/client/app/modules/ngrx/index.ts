@@ -39,6 +39,7 @@ import { combineReducers } from '@ngrx/store';
  */
 import * as fromMultilingual from '../i18n/index';
 import * as fromSample from '../sample/index';
+import * as fromTaxSlab from '../taxSlab/index';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -47,6 +48,7 @@ import * as fromSample from '../sample/index';
 export interface IAppState {
   i18n: fromMultilingual.IMultilingualState;
   sample: fromSample.ISampleState;
+  tax: fromTaxSlab.ITaxSlabState;
 }
 
 /**
@@ -58,7 +60,8 @@ export interface IAppState {
  */
 const reducers = {
   i18n: fromMultilingual.reducer,
-  sample: fromSample.reducer
+  sample: fromSample.reducer,
+  tax: fromTaxSlab.taxSlabReducer,
 };
 
 // ensure state is frozen as extra level of security when developing
@@ -73,6 +76,18 @@ export function AppReducer(state: any, action: any) {
   } else {
     return productionReducer(state, action);
   }
+}
+
+export function getTaxSlabs(state: IAppState) {
+  return state.tax;
+}
+
+export function getSelectedTaxSlab(state: IAppState) {
+  return state.tax.taxSlabs.filter(s=>s.id === state.tax.selectedTaxSlabId)[0];
+}
+
+export function getSelectedTaxSlabsId(state: IAppState) {
+  return state.tax.selectedTaxSlabId;
 }
 
 export function getMultilingualState(state$: Observable<IAppState>): Observable<fromMultilingual.IMultilingualState> {

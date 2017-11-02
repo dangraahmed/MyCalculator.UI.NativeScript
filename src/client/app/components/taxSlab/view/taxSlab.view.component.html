@@ -1,0 +1,32 @@
+<!-- {{this.listOfTaxSlab.taxSlabs | json}} -->
+<!-- <h3>Tax Slab</h3> -->
+<div class="pull-right">
+  <button class="btn" (click)="curdOperation(-1, 'edit')">Add New</button>
+</div>
+<div *ngIf="listOfTaxSlab else loadingData">
+  <table class="col-md-12 table-striped table-condensed table-hover">
+    <tr>
+      <th>Id</th>
+      <th>From Year</th>
+      <th>To Year</th>
+      <th>Category</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let taxSlab of listOfTaxSlab.taxSlabs">
+      <td> {{taxSlab.id}} </td>
+      <td> {{taxSlab.fromYear}} </td>
+      <td> {{taxSlab.toYear}} </td>
+      <td> {{taxSlab.category}} </td>
+      <td>
+        <a (click)="curdOperation(taxSlab.id, 'view')"><span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
+        <a (click)="curdOperation(taxSlab.id, 'edit')"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
+        <a (click)="curdOperation(taxSlab.id, 'delete')"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
+      </td>
+    </tr>
+  </table>
+</div>
+<ng-template #loadingData>
+  <div>
+    data loading
+  </div>
+</ng-template>
