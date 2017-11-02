@@ -11,7 +11,7 @@ export const routes: Array<any> = [
   // },
   {
     path: '',
-    redirectTo: '/admin',
+    redirectTo: '/admin/taxSlab/view',
     pathMatch: 'full'
   },
   ...HomeRoutes,
