@@ -4,6 +4,7 @@ import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { TaxSlabService } from '../services/taxSlab.service';
 import { TaxSlab } from '../actions/index';
+import { RouterExtensions } from '../../../modules/core/index';
 
 @Injectable()
 export class TaxSlabEffects {
@@ -43,7 +44,10 @@ export class TaxSlabEffects {
         .map(toPayload)
         .switchMap(taxSlabId => {
             return this.taxSlabService.addUpdateTaxSlab(taxSlabId)
-                .map(payload => new TaxSlab.AddUpdateTaxSlabSuccessfulAction(payload))
+                .map((payload) => {
+                    this.routerExt.navigate(['/admin/taxSlab/view']);
+                    return new TaxSlab.AddUpdateTaxSlabSuccessfulAction(payload);
+                })
                 .catch(() => Observable.of(new TaxSlab.AddUpdateTaxSlabFailedAction()));
         });
 
@@ -59,6 +63,7 @@ export class TaxSlabEffects {
     constructor(
         private store: Store<any>,
         private actions$: Actions,
+        public routerExt: RouterExtensions,
         private taxSlabService: TaxSlabService) {
 
     }
