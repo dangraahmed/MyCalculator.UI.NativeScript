@@ -112,7 +112,7 @@ function createSymLink() {
  */
 function displayFinalHelp()
 {
-    console.log("------------------------ Angular Seed Advanced is Now Ready ----------------------------");
+    console.log("------------------------ My Calculator is Now Ready ----------------------------");
     console.log("");
     console.log("Run your web app with:");
     console.log("  npm start");

@@ -10,8 +10,6 @@ import * as fromStore from '../../../modules/ngrx/index';
 import { TaxSlab } from '../../../modules/taxSlab/actions/index';
 import { ITaxSlab, ITaxSlabDetail } from '../../../modules/taxSlab/index';
 
-import { RouterExtensions, Config } from '../../../modules/core/index';
-
 @Component({
     moduleId: module.id,
     selector: 'cal-tax-slab-add-edit',
@@ -25,7 +23,6 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
     private selectedId: number;
     constructor(
         private store: Store<fromStore.IAppState>,
-        public routerext: RouterExtensions,
         private _formBuilder: FormBuilder) {
     }
 
@@ -104,8 +101,8 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
     }
 
     saveTaxSlab() {
+        debugger;
         this.store.dispatch(new TaxSlab.AddUpdateTaxSlabAction(this.taxSlabform.value));
-        this.routerext.navigate(['/admin/taxSlab/view']);
     }
 
     private gettaxSlabDetailForm(taxSlabDetail: ITaxSlabDetail) {
