@@ -14,12 +14,13 @@ import { TranslateLoader } from '@ngx-translate/core';
 // app
 import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
-
+import { ApiService } from './app/modules/shared/provider/api.service';
 // feature modules
 import { WindowService, StorageService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/services/index';
 import { CoreModule, Config } from './app/modules/core/index';
 import { AnalyticsModule } from './app/modules/analytics/index';
 import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
+import { TaxSlabModule, TaxSlabEffects } from './app/modules/taxSlab/index';
 import { SampleModule, SampleEffects } from './app/modules/sample/index';
 import { AppReducer } from './app/modules/ngrx/index';
 
@@ -79,10 +80,12 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       deps: [Http],
       useFactory: (translateLoaderFactory)
     }]),
+    TaxSlabModule,
     SampleModule,
     // configure app state
     StoreModule.provideStore(AppReducer),
     EffectsModule.run(MultilingualEffects),
+    EffectsModule.run(TaxSlabEffects),
     EffectsModule.run(SampleEffects),
     // dev environment only imports
     DEV_IMPORTS,
@@ -91,6 +94,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     APP_COMPONENTS
   ],
   providers: [
+    ApiService,
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'

@@ -5,7 +5,14 @@
     "src/client/**/*.js": true,
     "nativescript/app": true,
     "nativescript/src/**/*.js": true,
-    "ChromeDebugger-UserData/**/*": true
+    "ChromeDebugger-UserData/**/*": true,
+    "src/client/**/*.spec.ts": true,
+    "nativescript/src/**/*.spec.ts": true,
+    "src/client/**/*.tns.*": true,
+    "src/e2e/**/*": true,
+    ".docker/**/*": true,
+    ".github/**/*": true,
+    "dist/**/*": true
   },
   "search.exclude": {
     "**/coverage_js": true,
@@ -13,9 +20,10 @@
     "**/dist": true,
     "**/nativescript/platforms": true,
     "src/client/**/*.js": true,
-    "nativescript/app": true,
+    "nativescript/**/*": true,
     "nativescript/src/**/*.js": true,
-    "ChromeDebugger-UserData/**/*": true
+    "ChromeDebugger-UserData/**/*": true,
+    "**/*.spec.ts": true
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
