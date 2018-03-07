@@ -101,7 +101,6 @@ export class TaxSlabAddEditComponent implements OnInit, OnDestroy {
     }
 
     saveTaxSlab() {
-        debugger;
         this.store.dispatch(new TaxSlab.AddUpdateTaxSlabAction(this.taxSlabform.value));
     }
 
