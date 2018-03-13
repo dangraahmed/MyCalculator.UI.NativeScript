@@ -1,2 +1,15 @@
-Login
-Password
+<!-- <h3>Login</h3>
+<hr> -->
+<form [formGroup]="loginForm">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <b>User Id:</b>
+            <input type="text" formControlName="userId" class="form-control" />
+            <br>
+            <b>Password:</b>
+            <input type="text" formControlName="password" class="form-control" />
+            <br>
+            <button class="btn" (click)="login()">Login</button>
+        </div>
+    </div>
+</form>
