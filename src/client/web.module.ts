@@ -21,6 +21,7 @@ import { CoreModule, Config } from './app/modules/core/index';
 import { AnalyticsModule } from './app/modules/analytics/index';
 import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
 import { TaxSlabModule, TaxSlabEffects } from './app/modules/taxSlab/index';
+import { LoginModule } from './app/modules/login/index';
 import { SampleModule, SampleEffects } from './app/modules/sample/index';
 import { AppReducer } from './app/modules/ngrx/index';
 
@@ -81,6 +82,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       useFactory: (translateLoaderFactory)
     }]),
     TaxSlabModule,
+    LoginModule,
     SampleModule,
     // configure app state
     StoreModule.provideStore(AppReducer),
